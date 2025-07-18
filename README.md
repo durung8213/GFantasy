@@ -39,8 +39,4 @@ GFantasy [ UE 5.4 Team Project]
 3. 영상 링크
 
 https://youtu.be/hUx80san22A
-머테리얼을 활용한 디졸브 효과 구현
 
-============================== 
-
-3. 영상 링크 https://youtu.be/hUx80san22A
