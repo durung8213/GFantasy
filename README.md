@@ -1,11 +1,11 @@
-# GFantasy
+## GFantasy
 <img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1bf725a9-e0a1-4320-80ed-97d01259218e" />
 
-GFantasy [ UE 5.4 Team Project]
+## GFantasy [ UE 5.4 Team Project]
 
 ==============================
 
-1. 프로젝트 개요 
+# 1. 프로젝트 개요 
 
 게임 레퍼런스 : FF16 <br>
 게임 장르 : ARPG 멀티 게임 <br>
@@ -17,7 +17,7 @@ GFantasy [ UE 5.4 Team Project]
 
 ==============================
 
-2. 개발 부분 
+# 2. 개발 부분 
 
 2.1 캐릭터 전투 ( GAS 활용 )
  - 콤보 공격, 차징 스킬, 쿨타임 스킬 구현
@@ -36,7 +36,7 @@ GFantasy [ UE 5.4 Team Project]
 
 ============================== 
 
-3. 영상 링크
+# 3. 영상 링크
 
 https://youtu.be/hUx80san22A
 
