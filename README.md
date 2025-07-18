@@ -1,2 +1,31 @@
 # GFantasy
-KGA_GProject<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1bf725a9-e0a1-4320-80ed-97d01259218e" />
+<img width="1920" height="1200" alt="image" src="https://github.com/user-attachments/assets/1bf725a9-e0a1-4320-80ed-97d01259218e" />
+
+GFantasy [ UE 5.4 Team Project]
+
+1. 프로젝트 개요
+게임 레퍼런스 : FF16
+게임 장르 : ARPG 멀티 게임
+개발 엔진 : UE5.4 소스 엔진 버전 사용
+멀티 여부 : 최대 4인 플레이 가능
+개발 인원 : 4명
+개발 기간 : 25.04.21 ~ 25.06.23 ( 약 2개월 )
+사용 언어 : C++ (80%)/ Blueprint (20%)
+==============================
+2. 개발 부분
+2.1 캐릭터 전투 ( GAS 활용 )
+   - 콤보 공격, 차징 스킬, 쿨타임 스킬 구현
+   - AOE 를 활용한 스킬 구현
+   - 락온 시스템 구현
+   - 자동 타겟팅된 투사체 공격
+   - 필살기 시스템 구현
+   - 전투 / 비전투 모드 구현
+2.2 상호작용
+   - 인터페이스 활용하여 사물 / NPC와 상호작용 구현
+2.3 탈 것 시스템
+   - 탈 것 기능 구현
+   - 머테리얼을 활용한 디졸브 효과 구현
+
+==============================
+3. 영상 링크 
+https://youtu.be/hUx80san22A
