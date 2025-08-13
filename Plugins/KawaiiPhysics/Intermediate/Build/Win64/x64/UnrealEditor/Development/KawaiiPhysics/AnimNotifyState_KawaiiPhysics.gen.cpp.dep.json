@@ -1,0 +1,23 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\project\\gfantasy\\cbt\\gfantasy\\plugins\\kawaiiphysics\\intermediate\\build\\win64\\unrealeditor\\inc\\kawaiiphysics\\uht\\animnotifystate_kawaiiphysics.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\project\\gfantasy\\cbt\\gfantasy\\plugins\\kawaiiphysics\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\kawaiiphysics\\definitions.kawaiiphysics.h",
+            "d:\\project\\gfantasy\\cbt\\gfantasy\\plugins\\kawaiiphysics\\source\\kawaiiphysics\\animnotifies\\animnotifystate_kawaiiphysics.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\source\\runtime\\gameplaytags\\classes\\gameplaytagcontainer.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\source\\runtime\\core\\public\\misc\\comparisonutility.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\gameplaytags\\uht\\gameplaytagcontainer.generated.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\source\\runtime\\engine\\classes\\animation\\animnotifies\\animnotifystate.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\intermediate\\build\\win64\\unrealeditor\\inc\\engine\\uht\\animnotifystate.generated.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\instancedstruct.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\plugins\\experimental\\structutils\\source\\structutils\\public\\structutils.h",
+            "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\plugins\\experimental\\structutils\\intermediate\\build\\win64\\unrealeditor\\inc\\structutils\\uht\\instancedstruct.generated.h",
+            "d:\\project\\gfantasy\\cbt\\gfantasy\\plugins\\kawaiiphysics\\intermediate\\build\\win64\\unrealeditor\\inc\\kawaiiphysics\\uht\\animnotifystate_kawaiiphysics.generated.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}

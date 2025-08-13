@@ -1,0 +1,14 @@
+/NOLOGO
+/errorReport:prompt
+/MACHINE:x64
+/SUBSYSTEM:WINDOWS
+/DEF
+/NAME:"UnrealEditor-KawaiiPhysics.dll"
+/IGNORE:4221
+/NODEFAULTLIB
+"..\Intermediate\Build\Win64\x64\UnrealEditor\Development\UnrealEd\SharedPCH.UnrealEd.Project.ValApi.Cpp20.h.obj"
+"F:\2025_KGA\GFantasy\Plugins\KawaiiPhysics\Intermediate\Build\Win64\x64\UnrealEditor\Development\KawaiiPhysics\Module.KawaiiPhysics.1.cpp.obj"
+"F:\2025_KGA\GFantasy\Plugins\KawaiiPhysics\Intermediate\Build\Win64\x64\UnrealEditor\Development\KawaiiPhysics\Module.KawaiiPhysics.2.cpp.obj"
+"F:\2025_KGA\GFantasy\Plugins\KawaiiPhysics\Intermediate\Build\Win64\x64\UnrealEditor\Development\KawaiiPhysics\Module.KawaiiPhysics.3.cpp.obj"
+"..\Intermediate\Build\Win64\x64\UnrealEditor\Development\Default.rc2.res"
+/OUT:"F:\2025_KGA\GFantasy\Plugins\KawaiiPhysics\Intermediate\Build\Win64\x64\UnrealEditor\Development\KawaiiPhysics\UnrealEditor-KawaiiPhysics.lib"

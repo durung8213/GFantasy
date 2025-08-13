@@ -1,0 +1,13 @@
+{
+    "Version": "1.2",
+    "Data": {
+        "Source": "d:\\project\\gfantasy\\cbt\\gfantasy\\plugins\\kawaiiphysics\\intermediate\\build\\win64\\unrealeditor\\inc\\kawaiiphysicsed\\uht\\kawaiiphysicsed.init.gen.cpp",
+        "ProvidedModule": "",
+        "PCH": "c:\\ue\\unrealengine-5.4\\unrealengine-5.4\\engine\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\unrealed\\sharedpch.unrealed.project.valapi.cpp20.h.pch",
+        "Includes": [
+            "d:\\project\\gfantasy\\cbt\\gfantasy\\plugins\\kawaiiphysics\\intermediate\\build\\win64\\x64\\unrealeditor\\development\\kawaiiphysicsed\\definitions.kawaiiphysicsed.h"
+        ],
+        "ImportedModules": [],
+        "ImportedHeaderUnits": []
+    }
+}
