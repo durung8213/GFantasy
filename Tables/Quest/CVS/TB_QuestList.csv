@@ -1,0 +1,6 @@
+﻿---,bCanAcceptQuest,D_QuestID,D_QuestName,D_QuestDescription,D_QuestStateTag,D_QuestType,D_QuestDetailTag,D_TargetID,D_RequiredCount,D_CurrentCount,D_QuestProgress,D_RewardItemID,D_RewardCount
+1001,TRUE,C_HP,체력포션을 구해줘,늑대에게 맞아서 아프다. 체력포션 3개를 가져와라.,"(TagName=""Quest.State.Available"")",Collection,"(TagName=""Quest.Type.Collection.HealthPotion"")",HealthPotion,3,0,0,HealthPotion,30
+1002,TRUE,C_HP2,체력포션을 구해줘,늑대에게 맞아서 아프다. 체력포션 4개를 가져와라.,"(TagName=""Quest.State.Available"")",Collection,"(TagName=""Quest.Type.Collection.HealthPotion"")",HealthPotion,4,0,0,HealthPotion,40
+1003,TRUE,C_HP3,체력포션을 구해줘,늑대에게 맞아서 아프다. 체력포션 5개를 가져와라.,"(TagName=""Quest.State.Available"")",Collection,"(TagName=""Quest.Type.Collection.HealthPotion"")",HealthPotion,5,0,0,HealthPotion,50
+1004,TRUE,C_HP4,체력포션을 구해줘,늑대에게 맞아서 아프다. 체력포션 6개를 가져와라.,"(TagName=""Quest.State.Available"")",Collection,"(TagName=""Quest.Type.Collection.HealthPotion"")",HealthPotion,6,0,0,HealthPotion,60
+1005,TRUE,C_HP5,체력포션을 구해줘,늑대에게 맞아서 아프다. 체력포션 7개를 가져와라.,"(TagName=""Quest.State.Available"")",Collection,"(TagName=""Quest.Type.Collection.HealthPotion"")",HealthPotion,7,0,0,HealthPotion,70
