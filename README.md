@@ -50,5 +50,5 @@
 
 # 3. 영상 링크
 
-https://youtu.be/hUx80san22A
+https://youtu.be/Nfqxik0QWBo
 
