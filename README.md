@@ -56,8 +56,7 @@
 
 
 
-# 3. 영상 링크 <br>
-https://youtu.be/Nfqxik0QWBo<br>
+# 3.  [ 영상 링크 (클릭) ] (https://youtu.be/Nfqxik0QWBo) <br><br><br>
 
-# 4. [ 포트폴리오 링크 ](https://drive.google.com/file/d/1ZnebToaCGHJkmClal0KDEfAmYeGXMyhN/view?usp=drive_link) <br>
+# 4. [ 포트폴리오 링크 (클릭) ](https://drive.google.com/file/d/1ZnebToaCGHJkmClal0KDEfAmYeGXMyhN/view?usp=drive_link) <br><br><br>
 
