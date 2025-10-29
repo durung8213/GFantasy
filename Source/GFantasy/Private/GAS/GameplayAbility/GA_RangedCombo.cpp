@@ -57,7 +57,7 @@ void UGA_RangedCombo::EndAbility(const FGameplayAbilitySpecHandle Handle, const 
 	//AGASPlayerCharacter* Player = Cast<AGASPlayerCharacter>(GetAvatarActorFromActorInfo());
 	//if (Player && Player->HasAuthority())
 	//{
-	//	// ½½·Ô blend ²¨ÁÖ±â
+	//	// ìŠ¬ë¡¯ blend êº¼ì£¼ê¸°
 	//	Player->Multicast_PlayUpperBodyMontage(nullptr, /*bBlendOn=*/false);
 	//}
 	Super::EndAbility(Handle, ActorInfo, ActivationInfo, true, false);
@@ -70,14 +70,14 @@ void UGA_RangedCombo::RangedAttackCombo()
 	if (!RangedAttackMontage)
 		return;
 
-	// ¦¡ ¼­¹ö ¿ªÇÒ ¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡¦¡
+	// â”€ ì„œë²„ ì—­í•  â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€â”€
 	if (Player->HasAuthority())
 	{
-		// true·Î ½ÃÀÛ
+		// trueë¡œ ì‹œì‘
 		//Player->Multicast_PlayUpperBodyMontage(RangedAttackMontage, /*bBlendOn=*/true);
 	}
 
-	// ÀÏ¹İ ¸ùÅ¸ÁÖ ½ÇÇà.
+	// ì¼ë°˜ ëª½íƒ€ì£¼ ì‹¤í–‰.
 	MontageTask = UAbilityTask_PlayMontageAndWait::CreatePlayMontageAndWaitProxy(
 		this, NAME_None, RangedAttackMontage);
 	MontageTask->OnCompleted.AddDynamic(this, &UGA_RangedCombo::OnMontageCompleted);
@@ -86,7 +86,7 @@ void UGA_RangedCombo::RangedAttackCombo()
 	MontageTask->ReadyForActivation();
 
 
-	// Åõ»çÃ¼ ¹ß»ç ½ÃÁ¡ °¨Áö
+	// íˆ¬ì‚¬ì²´ ë°œì‚¬ ì‹œì  ê°ì§€
 	ShootEventTask = UAbilityTask_WaitGameplayEvent::WaitGameplayEvent(
 		this,
 		FGameplayTag::RequestGameplayTag("Event.Attack.Ranged"),
@@ -104,7 +104,7 @@ void UGA_RangedCombo::OnMontageCanceled()
 	//AGASPlayerCharacter* Player = Cast<AGASPlayerCharacter>(GetAvatarActorFromActorInfo());
 	//if (Player && Player->HasAuthority())
 	//{
-	//	// ½½·Ô blend ²¨ÁÖ±â
+	//	// ìŠ¬ë¡¯ blend êº¼ì£¼ê¸°
 	//	Player->Multicast_PlayUpperBodyMontage(nullptr, /*bBlendOn=*/false);
 	//}
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
@@ -115,7 +115,7 @@ void UGA_RangedCombo::OnMontageCompleted()
 	//AGASPlayerCharacter* Player = Cast<AGASPlayerCharacter>(GetAvatarActorFromActorInfo());
 	//if (Player && Player->HasAuthority())
 	//{
-	//	// ½½·Ô blend ²¨ÁÖ±â
+	//	// ìŠ¬ë¡¯ blend êº¼ì£¼ê¸°
 	//	Player->Multicast_PlayUpperBodyMontage(nullptr, /*bBlendOn=*/false);
 	//}
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
@@ -123,7 +123,7 @@ void UGA_RangedCombo::OnMontageCompleted()
 
 void UGA_RangedCombo::OnShootEventReceived(FGameplayEventData Payload)
 {
-	// ¼­¹ö¿¡¼­¸¸ Åõ»çÃ¼°¡ »ı¼ºµÇµµ·Ï ¼³Á¤.
+	// ì„œë²„ì—ì„œë§Œ íˆ¬ì‚¬ì²´ê°€ ìƒì„±ë˜ë„ë¡ ì„¤ì •.
 	if (!HasAuthority(&CurrentActivationInfo))
 		return;
 
@@ -132,9 +132,11 @@ void UGA_RangedCombo::OnShootEventReceived(FGameplayEventData Payload)
 	if (!ProjectileClass || !Player)
 		return;
 
+	// í”Œë ˆì´ì–´ì˜ ì† ìœ„ì¹˜ì—ì„œ ë‚˜ê°€ë„ë¡ íˆ¬ì‚¬ì²´ ìƒì„± ìœ„ì¹˜ ì„¤ì •
 	FVector SpawnLocation = Player->GetMesh()->GetSocketLocation(MuzzleSocket);
 	FRotator SpawnRotation;
 
+	// ê°ì§€ëœ ì ì´ ìˆë‹¤ë©´ í•´ë‹¹ ì ì„ í–¥í•´ì„œ ë‚ ë¼ê°€ë„ë¡ ì„¤ì •
 	if (Player->CurrentTarget)
 	{
 		FVector ToTarget = (Player->CurrentTarget->GetActorLocation() - SpawnLocation).GetSafeNormal();
@@ -142,6 +144,7 @@ void UGA_RangedCombo::OnShootEventReceived(FGameplayEventData Payload)
 	}
 	else
 	{
+		// ì ì´ ì—†ì„ ê²½ìš° í”Œë ˆì´ì–´ì˜ Forward ë°©í–¥ìœ¼ë¡œ íˆ¬ì‚¬ì²´ê°€ ë‚ ë¼ê°€ë„ë¡ ì„¤ì •
 		FVector Forward = Player->GetActorForwardVector();
 		SpawnRotation = Forward.Rotation();
 	}
@@ -165,6 +168,7 @@ void UGA_RangedCombo::OnShootEventReceived(FGameplayEventData Payload)
 
 		if (Player->CurrentTarget)
 		{
+			// íˆ¬ì‚¬ì²´ê°€ ê°ì§€ëœ ì ì—ì„œ ìë™ ìœ ë„ ë˜ë„ë¡ ì„¤ì •í•œë‹¤.
 			Projectile->SetHomingTarget(Player->CurrentTarget);
 		}
 	}
