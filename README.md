@@ -19,7 +19,6 @@
  ![G판타지_콤보](https://github.com/user-attachments/assets/df6e95c3-daef-4416-8f8f-0de8ada2fd10) <br>
     : 4단 콤보로 Gameplay Ability를 활용해 구현 <br><br>
 
-   
  #### [ 차징 스킬 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/GA_AttackCombo.cpp#L412) <br>
  ![G판타지_차징스킬](https://github.com/user-attachments/assets/7b8b3027-f143-4ca7-bc04-1aae3a568b1c) <br>
     : 1단 콤보 이후 꾹 누르고 있으면 차징 스킬 활성화 -> 이후 키 입력을 떼면 AOE 스킬 실행 <br><br>
@@ -27,9 +26,13 @@
  #### [ 쿨타임 스킬 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/PlayerSkill/GA_RainAttack.cpp#L98) <br>
 ![G판타지_쿨타임스킬](https://github.com/user-attachments/assets/954007b9-eacb-4a30-b605-abde6b05373e) <br>
     : GameplayEffect 활용, LineTrace를 이용하여 Target에 AOE 생성하여 범위 스킬 구현 <br><br>
+
+#### [ 패링 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/AttributeSet/GASCharacterAS.cpp#L224) <br>
+![패링](https://github.com/user-attachments/assets/aa0ec428-839e-4092-bf46-fdc535842da5)<br>
+: 공격 몽타주 노티파이에서 패링 가능 구간일 때, 피격 받으면 피격 처리를 무시하고 패링 기능이 실행되도록 구현 <br>
+: 기본 콤보 공격에서만 패링이 가능하며 패링 될 시, 화면 흔들림과 이펙트를 추가하여 GameplayAbility로 구현 <br><br>
     
 #### [ 락온 시스템 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/Character/GASPlayerCharacter.cpp#L1013) <br>
-
 ![락온 자동 공격](https://github.com/user-attachments/assets/fb4f44ac-b7b9-463d-b66c-7b0fea156cde) <br>
 : Timer를 활용하여 일정 시간동안 캐릭터 주변의 적을 탐색 <br>
 : R 버튼을 눌러 락온 기능 사용 가능 / 해당 적에게 자동 공격되도록 구현 <br><br>
