@@ -15,11 +15,9 @@
 # 2. 개발 부분 
 
 2.1 캐릭터 전투 ( GAS 활용 )
- - 콤보 공격, 차징 스킬, 쿨타임 스킬 구현 <br>
-   
-   * [ 콤보 공격 ] (https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/GA_AttackCombo.cpp#L99) <br>
+ # [ 콤보 공격 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/GA_AttackCombo.cpp#L99) <br>
    ![G판타지_콤보](https://github.com/user-attachments/assets/df6e95c3-daef-4416-8f8f-0de8ada2fd10) <br>
-    4단 콤보로 Gameplay Ability를 활용해 구현
+    : 4단 콤보로 Gameplay Ability를 활용해 구현
 
    
    * 차징 스킬
