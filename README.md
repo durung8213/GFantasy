@@ -15,16 +15,17 @@
 # 2. 개발 부분 
 
 2.1 캐릭터 전투 ( GAS 활용 )
- # [ 콤보 공격 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/GA_AttackCombo.cpp#L99) <br>
+ #### [ 콤보 공격 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/GA_AttackCombo.cpp#L99) <br>
    ![G판타지_콤보](https://github.com/user-attachments/assets/df6e95c3-daef-4416-8f8f-0de8ada2fd10) <br>
-    : 4단 콤보로 Gameplay Ability를 활용해 구현
+    : 4단 콤보로 Gameplay Ability를 활용해 구현 <br>
 
    
-   * 차징 스킬
-  1단 콤보 이후 꾹 누르고 있으면 차징 스킬 활성화 -> 이후 키 입력을 떼면 AOE 스킬 실행
+ #### [ 차징 스킬 ](https://github.com/durung8213/GFantasy/blob/main/Source/GFantasy/Private/GAS/GameplayAbility/GA_AttackCombo.cpp#L99) <br>
+    ![G판타지_차징스킬](https://github.com/user-attachments/assets/7f6aeaae-d2f5-46c9-86a0-5a6fe2ec35d4) <br>
+    : 1단 콤보 이후 꾹 누르고 있으면 차징 스킬 활성화 -> 이후 키 입력을 떼면 AOE 스킬 실행
      
    * 쿨타임 스킬 ( GameplayEffect 활용 )
- 
+ d
  - AOE 를 활용한 스킬 구현
   * 차징 / 쿨타임 스킬
     
