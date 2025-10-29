@@ -9,10 +9,10 @@
 
 UGA_AttackCombo::UGA_AttackCombo()
 {
-	// ÀÎ½ºÅÏ½º ¹æ½Ä ¼³Á¤
+	// ì¸ìŠ¤í„´ìŠ¤ ë°©ì‹ ì„¤ì •
 	InstancingPolicy = EGameplayAbilityInstancingPolicy::InstancedPerActor;
 
-	//ÇØ´ç ¾îºô¸®Æ¼¿¡ ÅÂ±× ºÎ¿©
+	//í•´ë‹¹ ì–´ë¹Œë¦¬í‹°ì— íƒœê·¸ ë¶€ì—¬
 	AbilityTags.AddTag(FGameplayTag::RequestGameplayTag(FName("Ability.Attack.Combo")));
 	ActivationOwnedTags.AddTag(FGameplayTag::RequestGameplayTag(FName("Ability.Attack.Combo")));
 
@@ -25,7 +25,7 @@ void UGA_AttackCombo::ActivateAbility(const FGameplayAbilitySpecHandle Handle, c
 
 	UKismetSystemLibrary::PrintString(this, TEXT("Attack Combo Start"));
 
-	//¸®¼Ò½º ¼Òºñ Äğ´Ù¿î
+	//ë¦¬ì†ŒìŠ¤ ì†Œë¹„ ì¿¨ë‹¤ìš´
 	if (!CommitAbility(Handle, ActorInfo, ActivationInfo))
 	{
 		UKismetSystemLibrary::PrintString(this, TEXT("Cool Down End"));
@@ -33,7 +33,7 @@ void UGA_AttackCombo::ActivateAbility(const FGameplayAbilitySpecHandle Handle, c
 		return;
 	}
 
-	//±âº» º¯¼ö ÃÊ±âÈ­
+	//ê¸°ë³¸ ë³€ìˆ˜ ì´ˆê¸°í™”
 	ComboIndex = 0;
 	bCanCombo = false;
 	bIsMontageDone = false;
@@ -42,83 +42,83 @@ void UGA_AttackCombo::ActivateAbility(const FGameplayAbilitySpecHandle Handle, c
 	HeldTime = 0.f;
 	CurrentMontageTask = nullptr;
 
-	// ÄŞº¸ À©µµ¿ì ÁØºñ
+	// ì½¤ë³´ ìœˆë„ìš° ì¤€ë¹„
 	SetupComboWindow();
 
 	ResetRotation();
 
-	/* Â÷Â¡ ¿©ºÎ */
+	/* ì°¨ì§• ì—¬ë¶€ */
 
-	// ÀÔ·Â ½Ã°£ ÃÊ±âÈ­
+	// ì…ë ¥ ì‹œê°„ ì´ˆê¸°í™”
 	HeldTime = 0.f;
 	bHoldTriggered = false;
 	bIsInputReleased = false;
 
-	// 0.05ÃÊ¸¶´Ù UpdateHold ½ÇÇà
+	// 0.05ì´ˆë§ˆë‹¤ UpdateHold ì‹¤í–‰
 	GetWorld()->GetTimerManager().SetTimer(
 		HoldTH,
 		this,
 		&UGA_AttackCombo::UpdateHold,
 		0.05f,
-		true	//¹İº¹¿©ºÎ
+		true	//ë°˜ë³µì—¬ë¶€
 	);
 
-	// Ã¹ ¹øÂ° ÄŞº¸ °ø°İ ½ÇÇà
+	// ì²« ë²ˆì§¸ ì½¤ë³´ ê³µê²© ì‹¤í–‰
 	PlayComboStep(ComboIndex);
 }
 
-// ¾îºô¸®Æ¼¿¡¼­ÀÇ ÀÔ·Â ¾îºô¸®Æ¼·Î ¼³Á¤µÈ °æ¿ì, ÀÔ·ÂÀÌ µé¾î¿À¸é ¾Æ·¡ÀÇ ÇÔ¼ö°¡ ½ÇÇàµÈ´Ù.
+// ì–´ë¹Œë¦¬í‹°ì—ì„œì˜ ì…ë ¥ ì–´ë¹Œë¦¬í‹°ë¡œ ì„¤ì •ëœ ê²½ìš°, ì…ë ¥ì´ ë“¤ì–´ì˜¤ë©´ ì•„ë˜ì˜ í•¨ìˆ˜ê°€ ì‹¤í–‰ëœë‹¤.
 void UGA_AttackCombo::InputPressed(const FGameplayAbilitySpecHandle Handle, const FGameplayAbilityActorInfo* ActorInfo, const FGameplayAbilityActivationInfo ActivationInfo)
 {
 	Super::InputPressed(Handle, ActorInfo, ActivationInfo);
 	
-	// ÄŞº¸ À©µµ¿ì°¡ ¿­·ÁÀÖÁö ¾ÊÀ¸¸é ¹«½Ã.
+	// ì½¤ë³´ ìœˆë„ìš°ê°€ ì—´ë ¤ìˆì§€ ì•Šìœ¼ë©´ ë¬´ì‹œ.
 
 	if (!bCanCombo )
 	{
 		return;
 	}
 
-	// ¼­¹ö / Å¬¶ó ÄŞº¸ ½ÇÇà.
+	// ì„œë²„ / í´ë¼ ì½¤ë³´ ì‹¤í–‰.
 	if (HasAuthority(&ActivationInfo) || IsPredictingClient())
 	{
-		// ¼­¹ö¿¡¼­ ½ÇÇà 
-		ComboAttack();	//¸ùÅ¸ÁÖ ½ÇÇàÇÏ°í
+		// ì„œë²„ì—ì„œ ì‹¤í–‰ 
+		ComboAttack();	//ëª½íƒ€ì£¼ ì‹¤í–‰í•˜ê³ 
 		UE_LOG(LogTemp, Warning, TEXT("AttackCombo : 1"));
 	}
 	if (!HasAuthority(&ActivationInfo))
 	{
-		// Å¬¶óÀÏ °æ¿ì, ¼­¹ö RPC ½ÇÇàÇÏ±â.
+		// í´ë¼ì¼ ê²½ìš°, ì„œë²„ RPC ì‹¤í–‰í•˜ê¸°.
 		ActorInfo->AbilitySystemComponent->ServerSetInputPressed(Handle);
 		UE_LOG(LogTemp, Warning, TEXT("AttackCombo : 2"));
 	}
 }
 
 
-// ÄŞº¸ °ø°İ ½ÇÇà 
+// ì½¤ë³´ ê³µê²© ì‹¤í–‰ 
 void UGA_AttackCombo::ComboAttack()
 {
 	if (!bCanCombo)
 	{
-		//ÇöÀç ÄŞº¸ °ø°İÀÌ °¡´ÉÇÑ »óÅÂ°¡ ¾Æ´Ï¶ó¸é
+		//í˜„ì¬ ì½¤ë³´ ê³µê²©ì´ ê°€ëŠ¥í•œ ìƒíƒœê°€ ì•„ë‹ˆë¼ë©´
 		return;
 	}
 
-	// ÀÌÀü Task ÃÊ±âÈ­
+	// ì´ì „ Task ì´ˆê¸°í™”
 	SafeEndCurrentMontageTask();
 
-	// ÄŞº¸ ÀÎµ¦½º Áõ°¡ ¹× »óÅÂ ÃÊ±âÈ­.
+	// ì½¤ë³´ ì¸ë±ìŠ¤ ì¦ê°€ ë° ìƒíƒœ ì´ˆê¸°í™”.
 	++ComboIndex;
 	bCanCombo = false;
 	bIsMontageDone = false;
 
-	// ÀÌÀü ÄŞº¸ À©µµ¿ì ÅÂ½ºÅ© Á¾·á
+	// ì´ì „ ì½¤ë³´ ìœˆë„ìš° íƒœìŠ¤í¬ ì¢…ë£Œ
 	ClearComboWindowTasks();
 
-	// ¸¸¾à ¶ô¿Â »óÅÂÀÏ ½Ã, Å¸°Ù ¹Ù¶óº¸°Ô È¸Àü.
+	// ë§Œì•½ ë½ì˜¨ ìƒíƒœì¼ ì‹œ, íƒ€ê²Ÿ ë°”ë¼ë³´ê²Œ íšŒì „.
 	RotateToLockOnTaret();
 
-	// comboIndex¿¡ µû¸¥ °ø°İ ½ÇÇà
+	// comboIndexì— ë”°ë¥¸ ê³µê²© ì‹¤í–‰
 	PlayComboStep(ComboIndex);
 }
 
@@ -163,12 +163,12 @@ void UGA_AttackCombo::SafeEndCurrentMontageTask()
 {
 	if (CurrentMontageTask && IsValid(CurrentMontageTask))
 	{
-		// µ¨¸®°ÔÀÌÆ® ¹ÙÀÎµù ÇØÁ¦
+		// ë¸ë¦¬ê²Œì´íŠ¸ ë°”ì¸ë”© í•´ì œ
 		CurrentMontageTask->OnCompleted.RemoveAll(this);
 		CurrentMontageTask->OnCancelled.RemoveAll(this);
 		CurrentMontageTask->OnInterrupted.RemoveAll(this);
 
-		// ÅÂ½ºÅ© Á¾·á
+		// íƒœìŠ¤í¬ ì¢…ë£Œ
 		CurrentMontageTask->EndTask();
 		CurrentMontageTask = nullptr;
 
@@ -182,26 +182,26 @@ void UGA_AttackCombo::InputReleased(const FGameplayAbilitySpecHandle Handle, con
 
 	bIsInputReleased = true;
 
-	// Å¸ÀÌ¸Ó Áß´Ü
+	// íƒ€ì´ë¨¸ ì¤‘ë‹¨
 	GetWorld()->GetTimerManager().ClearTimer(HoldTH);
 
 	UE_LOG(LogTemp, Warning, TEXT("InputReleased"));
 
 
-	// È¦µå°¡ Æ®¸®°ÅµÇ¾ú´Ù¸é Â÷Â¡ ½ºÅ³ ½ÇÇà
+	// í™€ë“œê°€ íŠ¸ë¦¬ê±°ë˜ì—ˆë‹¤ë©´ ì°¨ì§• ìŠ¤í‚¬ ì‹¤í–‰
 
 
 	if (bHoldTriggered)
 	{
-		// ÀÏÁ¤ ½Ã°£ ÀÌ»ó ´­·¯Á³À¸¸é -> Ä¿¸Çµå ½ºÅ³ ½ÇÇà
-		// ¾îºô¸®Æ¼ ÅÂ±× °¡Á®¿Í¼­ ÇØ´ç ¾îºô¸®Æ¼ ½ÇÇà
+		// ì¼ì • ì‹œê°„ ì´ìƒ ëˆŒëŸ¬ì¡Œìœ¼ë©´ -> ì»¤ë§¨ë“œ ìŠ¤í‚¬ ì‹¤í–‰
+		// ì–´ë¹Œë¦¬í‹° íƒœê·¸ ê°€ì ¸ì™€ì„œ í•´ë‹¹ ì–´ë¹Œë¦¬í‹° ì‹¤í–‰
 
 		UAbilitySystemComponent* ASC = GetAbilitySystemComponentFromActorInfo();
 
 		if (ASC)
 		{
 
-			// Tag ±â¹İ Effect & Cue Á¦°Å
+			// Tag ê¸°ë°˜ Effect & Cue ì œê±°
 			if (HasAuthority(&CurrentActivationInfo))
 			{
 				if (ChargingEffectHandle.IsValid())
@@ -229,7 +229,7 @@ void UGA_AttackCombo::InputReleased(const FGameplayAbilitySpecHandle Handle, con
 		UKismetSystemLibrary::PrintString(this, TEXT("Remove Charge Effect In Server"));
 		FGameplayTag ChargeTag = FGameplayTag::RequestGameplayTag(TEXT("Ability.Skill.Sword.ChargeCommand"));
 
-		// ASC¿¡°Ô ¾îºô¸®Æ¼ ³Ñ±â±â ÇØ´ç ÇÔ¼ö¿¡¼­ ¾îºô¸®Æ¼ ½ÇÇà
+		// ASCì—ê²Œ ì–´ë¹Œë¦¬í‹° ë„˜ê¸°ê¸° í•´ë‹¹ í•¨ìˆ˜ì—ì„œ ì–´ë¹Œë¦¬í‹° ì‹¤í–‰
 		FTimerDelegate Delegate;
 		Delegate.BindUFunction(PlayerASC, FName("DeferredActivateAbilityByTag"), ChargeTag);
 
@@ -241,10 +241,10 @@ void UGA_AttackCombo::InputReleased(const FGameplayAbilitySpecHandle Handle, con
 		return;
 	}
 
-	// Â÷Â¡ ¹Ì¹ßµ¿ / ¸ùÅ¸ÁÖ°¡ ÀÌ¹Ì ³¡³­ »óÅÂ -> Áï½Ã Á¾·á.
+	// ì°¨ì§• ë¯¸ë°œë™ / ëª½íƒ€ì£¼ê°€ ì´ë¯¸ ëë‚œ ìƒíƒœ -> ì¦‰ì‹œ ì¢…ë£Œ.
 	if (bIsMontageDone && !bHoldTriggered)
 	{
-		// ¾Æ´Ï¸é ±×³É ÀÏ¹İ °ø°İ Á¾·á
+		// ì•„ë‹ˆë©´ ê·¸ëƒ¥ ì¼ë°˜ ê³µê²© ì¢…ë£Œ
 		UE_LOG(LogTemp, Warning, TEXT("AttackCombo : 4"));
 		EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 	}
@@ -258,14 +258,14 @@ void UGA_AttackCombo::InputReleased(const FGameplayAbilitySpecHandle Handle, con
 
 void UGA_AttackCombo::OnMontageCompleted()
 {
-	// ÇöÀç ¾îºô¸®Æ¼ ½ÇÇàÁßÀÎ Ä³¸¯ÅÍ °¡Á®¿À±â
+	// í˜„ì¬ ì–´ë¹Œë¦¬í‹° ì‹¤í–‰ì¤‘ì¸ ìºë¦­í„° ê°€ì ¸ì˜¤ê¸°
 	AGASPlayerCharacter* Player = Cast<AGASPlayerCharacter>(CurrentActorInfo->AvatarActor.Get());
 	if (!Player)
 		return;
 
 	bIsMontageDone = true;
 
-	// ÀÔ·ÂÀÌ ÀÌ¹Ì ¶¼¾îÁ® ÀÖÀ¸¸é Áï½Ã Á¾·á.
+	// ì…ë ¥ì´ ì´ë¯¸ ë–¼ì–´ì ¸ ìˆìœ¼ë©´ ì¦‰ì‹œ ì¢…ë£Œ.
 	if (bIsInputReleased && !bHoldTriggered)
 	{
 		UE_LOG(LogTemp, Warning, TEXT("bHoldTriggered : false"));
@@ -278,7 +278,7 @@ void UGA_AttackCombo::OnMontageCompleted()
 	// 	return;
 	// }
 	//
-	// // ÀÔ·ÂÀÌ ¶¼¾îÁø »óÅÂµç ¾Æ´Ïµç Á¾·áÇÏ±â.
+	// // ì…ë ¥ì´ ë–¼ì–´ì§„ ìƒíƒœë“  ì•„ë‹ˆë“  ì¢…ë£Œí•˜ê¸°.
 	// EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 
 }
@@ -290,11 +290,11 @@ void UGA_AttackCombo::OnMontageCanceled()
 	EndAbility(CurrentSpecHandle, CurrentActorInfo, CurrentActivationInfo, true, false);
 }
 
-// 2~4´Ü ÄŞº¸ ¸ùÅ¸ÁÖ ½ÇÇà
+// 2~4ë‹¨ ì½¤ë³´ ëª½íƒ€ì£¼ ì‹¤í–‰
 void UGA_AttackCombo::PlayComboStep(int32 NewComboIndex)
 {
 
-	// ¹è¿­ ¹üÀ§¸¦ ¹ş¾î³ª¸é (¸¶Áö¸· ½ºÅÜÀ» ÀÌ¹Ì ³Ñ°åÀ¸¸é ) -> OnMontageCompleted·Î °£ÁÖ
+	// ë°°ì—´ ë²”ìœ„ë¥¼ ë²—ì–´ë‚˜ë©´ (ë§ˆì§€ë§‰ ìŠ¤í…ì„ ì´ë¯¸ ë„˜ê²¼ìœ¼ë©´ ) -> OnMontageCompletedë¡œ ê°„ì£¼
 	if (!ComboMontages.IsValidIndex(NewComboIndex))
 	{
 		OnMontageCompleted();
@@ -368,7 +368,7 @@ void UGA_AttackCombo::ExecuteChargeAbility()
 
 void UGA_AttackCombo::ResetRotation()
 
-{	// ÇöÀç ¾îºô¸®Æ¼ ½ÇÇàÁßÀÎ Ä³¸¯ÅÍ °¡Á®¿À±â
+{	// í˜„ì¬ ì–´ë¹Œë¦¬í‹° ì‹¤í–‰ì¤‘ì¸ ìºë¦­í„° ê°€ì ¸ì˜¤ê¸°
 	AGASPlayerCharacter* Player = Cast<AGASPlayerCharacter>(CurrentActorInfo->AvatarActor.Get());
 	if (!Player)
 		return;
@@ -409,6 +409,8 @@ bool UGA_AttackCombo::IsInputStillPressed()
 
 void UGA_AttackCombo::UpdateHold()
 {
+	// í‚¤ ì…ë ¥ì´ Holding ë˜ê³  ìˆëŠ”ì§€ë¥¼ ê²€ì‚¬
+	
 	if (bHoldTriggered || ComboIndex > 0)
 	{
 		return;
@@ -418,6 +420,7 @@ void UGA_AttackCombo::UpdateHold()
 
 	UE_LOG(LogTemp, Warning, TEXT("UpdateHold HeldTime : %f"), HeldTime);
 
+	// ë§Œì•½ ì§€ì •ëœ ì‹œê°„ë™ì•ˆ í™€ë“œ ë˜ì–´ ìˆë‹¤ë©´
 	if (HeldTime >= HoldThreshold)
 	{
 
@@ -432,6 +435,7 @@ void UGA_AttackCombo::UpdateHold()
 
 				if (SpecHandle.IsValid())
 				{
+					// ê²€ì´ ë¶ˆíƒ€ëŠ” GameplayEffectë¥¼ ì‹¤í–‰
 					ChargingEffectHandle = ASC->ApplyGameplayEffectSpecToSelf(*SpecHandle.Data.Get());
 
 					UE_LOG(LogTemp, Warning, TEXT("ChargingEffect Applied"));
@@ -451,7 +455,7 @@ void UGA_AttackCombo::EndAbility(const FGameplayAbilitySpecHandle Handle, const 
 
 	if (ChargingEffectHandle.IsValid())
 	{
-		// ÇÚµé ÃÊ±âÈ­ º¸Àå
+		// í•¸ë“¤ ì´ˆê¸°í™” ë³´ì¥
 		GetAbilitySystemComponentFromActorInfo()->RemoveActiveGameplayEffect(ChargingEffectHandle);
 		UE_LOG(LogTemp, Warning, TEXT("ChargingEffect Removed"));
 		ChargingEffectHandle = FActiveGameplayEffectHandle();
